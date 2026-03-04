@@ -1,0 +1,82 @@
+---
+const testimonials = [
+  {
+    quote: 'We used to spend 2 days shortlisting candidates. AI does it in minutes now.',
+    author: 'Priya S.',
+    role: 'HR Manager, Bangalore',
+  },
+  {
+    quote: 'The magic feedback link is genius. Interviewers actually submit feedback now.',
+    author: 'Rahul K.',
+    role: 'CTO, IT Staffing Agency',
+  },
+  {
+    quote: 'Finally an ATS built for Indian teams at a price that makes sense.',
+    author: 'Anita M.',
+    role: 'Talent Lead, Fintech Company',
+  },
+];
+---
+
+<section class="section testimonials">
+  <div class="section-inner">
+    <h2 class="section-title">Loved by hiring teams</h2>
+    <p class="section-desc">See what HR and engineering leaders say.</p>
+    <div class="testimonials-grid">
+      {testimonials.map((t) => (
+        <blockquote class="testimonial-card">
+          <p class="testimonial-quote">"{t.quote}"</p>
+          <footer class="testimonial-author">
+            <cite>— {t.author}</cite>
+            <span class="testimonial-role">{t.role}</span>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    margin: 0;
+    padding: 1.5rem;
+    background: var(--surface-card);
+    border: 1px solid var(--border-default);
+    border-radius: 12px;
+  }
+
+  .testimonial-quote {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+  }
+
+  .testimonial-author {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .testimonial-author cite {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .testimonial-role {
+    display: block;
+    margin-top: 0.15rem;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

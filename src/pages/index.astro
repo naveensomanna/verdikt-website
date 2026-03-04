@@ -1,11 +1,89 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Problems from '../components/Problems.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Pricing from '../components/Pricing.astro';
+import Competitors from '../components/Competitors.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+import Differentiators from '../components/Differentiators.astro';
 ---
 
 <Layout>
-	<Welcome />
+  <div class="page">
+    <Header />
+    <main>
+      <Hero />
+      <Differentiators />
+      <Features />
+      <Problems />
+      <HowItWorks />
+      <Pricing />
+      <Competitors />
+      <Testimonials />
+      <FAQ />
+      <section class="cta-section">
+        <div class="cta-inner">
+          <h2 class="cta-title">Ready to hire better?</h2>
+          <p class="cta-desc">Start your 14-day free trial. No credit card required.</p>
+          <a href="https://verdkit.vercel.app/register" class="cta-btn" target="_blank" rel="noopener noreferrer">Get started free</a>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
 </Layout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  .cta-section {
+    padding: var(--section-padding) 1.5rem;
+    text-align: center;
+    background: var(--surface-card);
+    border-top: 1px solid var(--border-default);
+  }
+
+  .cta-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+  }
+
+  .cta-desc {
+    color: var(--text-muted);
+    margin: 0 0 1.5rem;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-500);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: opacity 0.2s;
+  }
+
+  .cta-btn:hover {
+    opacity: 0.9;
+  }
+</style>

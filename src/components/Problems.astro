@@ -1,0 +1,75 @@
+---
+const problems = [
+  {
+    title: 'Resumes piling up in email',
+    desc: 'HR teams waste hours manually reading 100+ resumes with no way to rank or compare candidates.',
+    solution: 'Our AI screens and ranks all resumes in seconds.',
+  },
+  {
+    title: 'Chasing interviewers for feedback',
+    desc: 'Feedback never arrives on time. HR sends follow ups on WhatsApp just to get a simple Pass or Fail.',
+    solution: 'Our magic link gets feedback in 2 minutes, no login.',
+  },
+  {
+    title: 'No visibility on pipeline',
+    desc: 'Candidates fall through cracks. No one knows who was interviewed or what was decided.',
+    solution: 'Our Kanban board shows everything in real time.',
+  },
+];
+---
+
+<section class="section problems">
+  <div class="section-inner">
+    <h2 class="section-title">Problems we solve</h2>
+    <p class="section-desc">Built for how Indian hiring teams actually work.</p>
+    <div class="problems-list">
+      {problems.map((p) => (
+        <article class="problem-card">
+          <h3 class="problem-title">{p.title}</h3>
+          <p class="problem-desc">{p.desc}</p>
+          <p class="problem-solution"><strong>Verdikt:</strong> {p.solution}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .problems-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .problem-card {
+    padding: 1.5rem 1.75rem;
+    background: var(--surface-card);
+    border: 1px solid var(--border-default);
+    border-radius: 12px;
+  }
+
+  .problem-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+
+  .problem-desc {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    margin: 0 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  .problem-solution {
+    font-size: 0.9375rem;
+    margin: 0;
+    color: var(--success);
+  }
+
+  .problem-solution strong {
+    color: var(--text-primary);
+  }
+</style>

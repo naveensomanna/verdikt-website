@@ -1,0 +1,176 @@
+---
+const plans = [
+  {
+    name: 'Free',
+    price: '₹0',
+    period: '/month',
+    highlight: false,
+    features: [
+      '1 active board',
+      '5 interviews/month',
+      '2 team members',
+      'Basic coding editor',
+      'Magic link feedback',
+    ],
+    cta: 'Get started',
+  },
+  {
+    name: 'Starter',
+    price: '₹2,999',
+    period: '/month',
+    highlight: true,
+    features: [
+      '3 active boards',
+      '25 interviews/month',
+      '5 team members',
+      'AI resume screening',
+      'Bulk resume upload',
+      'Email automation',
+      'Google Calendar integration',
+      'In-app notifications',
+    ],
+    cta: 'Start free trial',
+  },
+  {
+    name: 'Growth',
+    price: '₹7,999',
+    period: '/month',
+    highlight: false,
+    features: [
+      'Unlimited boards',
+      '100 interviews/month',
+      '15 team members',
+      'Everything in Starter',
+      'Advanced analytics',
+      'Custom email branding',
+      'Priority support',
+      'API access',
+    ],
+    cta: 'Start free trial',
+  },
+];
+---
+
+<section id="pricing" class="section pricing">
+  <div class="section-inner">
+    <h2 class="section-title">Simple pricing</h2>
+    <p class="section-desc">14 day free trial, no credit card needed. All plans.</p>
+    <div class="pricing-grid">
+      {plans.map((plan) => (
+        <article class={`pricing-card ${plan.highlight ? 'highlight' : ''}`}>
+          <h3 class="plan-name">{plan.name}</h3>
+          <div class="plan-price">
+            <span class="price">{plan.price}</span>
+            <span class="period">{plan.period}</span>
+          </div>
+          <ul class="plan-features">
+            {plan.features.map((f) => (
+              <li>{f}</li>
+            ))}
+          </ul>
+          <a href="https://verdkit.vercel.app/register" class="plan-cta" target="_blank" rel="noopener noreferrer">{plan.cta}</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    padding: 1.75rem;
+    background: var(--surface-card);
+    border: 1px solid var(--border-default);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pricing-card.highlight {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 1px var(--primary-500);
+  }
+
+  .plan-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+  }
+
+  .plan-price {
+    margin-bottom: 1.5rem;
+  }
+
+  .price {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .period {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .plan-features {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    flex: 1;
+  }
+
+  .plan-features li {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    padding: 0.35rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .plan-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    background: var(--success);
+    border-radius: 50%;
+  }
+
+  .plan-cta {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    background: var(--primary-500);
+    color: white;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: opacity 0.2s;
+  }
+
+  .plan-cta:hover {
+    opacity: 0.9;
+  }
+
+  .pricing-card.highlight .plan-cta {
+    background: var(--primary-500);
+  }
+
+  @media (max-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
