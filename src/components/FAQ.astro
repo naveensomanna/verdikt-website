@@ -1,55 +1,63 @@
 ---
 const faqs = [
-  {
-    q: 'Do interviewers need an account?',
-    a: 'No. They get a magic link. No login ever.',
-  },
-  {
-    q: 'How does AI screening work?',
-    a: 'Add JD to board, upload resumes, AI ranks every candidate with match score instantly.',
-  },
-  {
-    q: 'Is data secure?',
-    a: 'Yes. Encrypted, stored securely, never shared.',
-  },
-  {
-    q: 'Built for Indian companies?',
-    a: 'Yes. INR pricing, Indian workflows, Naukri and LinkedIn integration coming soon.',
-  },
-  {
-    q: 'What after free trial?',
-    a: 'Continue free plan or upgrade. No card needed to start.',
-  },
+  { q: 'Do interviewers need an account?', a: 'No. They get a magic link. No login ever.' },
+  { q: 'How does AI screening work?', a: 'Add JD to board, upload resumes, AI ranks every candidate with match score instantly.' },
+  { q: 'Is data secure?', a: 'Yes. Encrypted, stored securely, never shared.' },
+  { q: 'Built for Indian companies?', a: 'Yes. INR pricing, Indian workflows, Naukri and LinkedIn integration coming soon.' },
+  { q: 'What after free trial?', a: 'Continue free plan or upgrade. No card needed to start.' },
 ];
 ---
 
-<section id="faq" class="section faq">
+<section id="faq" class="section faq" data-aos="fade-up">
   <div class="section-inner">
-    <h2 class="section-title">FAQ</h2>
-    <div class="faq-list">
-      {faqs.map((item) => (
-        <details class="faq-item">
+    <h2 class="section-title" data-aos="fade-up">FAQ</h2>
+    <div class="faq-accordion" id="faq-accordion">
+      {faqs.map((item, i) => (
+        <details class="faq-item" data-faq-item>
           <summary class="faq-q">{item.q}</summary>
-          <p class="faq-a">{item.a}</p>
+          <div class="faq-a-wrap">
+            <p class="faq-a">{item.a}</p>
+          </div>
         </details>
       ))}
     </div>
   </div>
 </section>
 
+<script>
+  function initFaqAccordion() {
+    const container = document.getElementById('faq-accordion');
+    if (!container) return;
+    container.querySelectorAll<HTMLDetailsElement>('details[data-faq-item]').forEach((detail) => {
+      detail.addEventListener('toggle', () => {
+        if (detail.open) {
+          container.querySelectorAll<HTMLDetailsElement>('details[data-faq-item]').forEach((d) => {
+            if (d !== detail) d.open = false;
+          });
+        }
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaqAccordion);
+  } else {
+    initFaqAccordion();
+  }
+</script>
+
 <style>
-  .faq-list {
+  .faq-accordion {
     max-width: 36rem;
     margin: 0 auto;
   }
 
   .faq-item {
     border-bottom: 1px solid var(--border-default);
-    padding: 1rem 0;
+    padding: 0;
   }
 
   .faq-item:first-child {
-    padding-top: 0;
+    border-top: none;
   }
 
   .faq-q {
@@ -57,8 +65,9 @@ const faqs = [
     font-weight: 600;
     cursor: pointer;
     list-style: none;
-    padding-right: 1.5rem;
+    padding: 1rem 2.5rem 1rem 0;
     position: relative;
+    user-select: none;
   }
 
   .faq-q::-webkit-details-marker {
@@ -69,19 +78,25 @@ const faqs = [
     content: '+';
     position: absolute;
     right: 0;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--text-muted);
     font-size: 1.25rem;
+    transition: transform 0.2s;
   }
 
   .faq-item[open] .faq-q::after {
     content: '−';
   }
 
+  .faq-a-wrap {
+    padding: 0 0 1rem;
+  }
+
   .faq-a {
     font-size: 0.9375rem;
     color: var(--text-muted);
-    margin: 0.75rem 0 0;
+    margin: 0;
     line-height: 1.6;
   }
 </style>

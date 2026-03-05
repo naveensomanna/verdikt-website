@@ -1,85 +1,103 @@
 ---
-const comparisons = [
-  {
-    vs: 'vs Greenhouse',
-    points: ['10x cheaper', 'AI screening built in', 'No complex setup', 'Ready in 10 minutes'],
-  },
-  {
-    vs: 'vs Ashby',
-    points: ['Half the price', 'Magic link feedback', 'No interviewer login needed', 'Built for Indian teams'],
-  },
-  {
-    vs: 'vs interview.io',
-    points: ['Full ATS included', 'AI resume screening', 'Kanban pipeline', 'Not just coding assessments'],
-  },
+const rows = [
+  { feature: 'Price', verdikt: 'From ₹0', greenhouse: '10x more', ashby: '2x more', interview: 'Different model' },
+  { feature: 'AI resume screening', verdikt: '✓', greenhouse: 'Paid add-on', ashby: 'Limited', interview: '✓' },
+  { feature: 'Magic link feedback', verdikt: '✓', greenhouse: '—', ashby: '—', interview: '—' },
+  { feature: 'No interviewer login', verdikt: '✓', greenhouse: '—', ashby: '—', interview: '—' },
+  { feature: 'Setup time', verdikt: '~10 min', greenhouse: 'Complex', ashby: 'Complex', interview: 'N/A' },
+  { feature: 'Full ATS + Kanban', verdikt: '✓', greenhouse: '✓', ashby: '✓', interview: 'Coding focus' },
+  { feature: 'Built for Indian teams', verdikt: '✓ INR', greenhouse: '—', ashby: '—', interview: '—' },
 ];
 ---
 
-<section class="section competitors">
+<section class="section competitors" data-aos="fade-up">
   <div class="section-inner">
-    <h2 class="section-title">Built to beat the rest</h2>
-    <p class="section-desc">Same workflow, better price and less friction.</p>
-    <div class="comparison-grid">
-      {comparisons.map((c) => (
-        <article class="comparison-card">
-          <h3 class="comparison-vs">{c.vs}</h3>
-          <ul class="comparison-points">
-            {c.points.map((p) => (
-              <li>{p}</li>
-            ))}
-          </ul>
-        </article>
-      ))}
+    <h2 class="section-title" data-aos="fade-up">Built to beat the rest</h2>
+    <p class="section-desc" data-aos="fade-up">Same workflow, better price and less friction.</p>
+    <div class="table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="col-feature">Feature</th>
+            <th class="col-verdikt">Verdikt</th>
+            <th class="col-other">Greenhouse</th>
+            <th class="col-other">Ashby</th>
+            <th class="col-other">interview.io</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr>
+              <td class="col-feature">{row.feature}</td>
+              <td class="col-verdikt"><span class={row.verdikt === '✓' ? 'cell-check' : ''}>{row.verdikt}</span></td>
+              <td class="col-other">{row.greenhouse}</td>
+              <td class="col-other">{row.ashby}</td>
+              <td class="col-other">{row.interview}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
 <style>
-  .comparison-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .comparison-card {
-    padding: 1.5rem;
-    background: var(--surface-card);
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border-default);
-    border-radius: 12px;
+    background: var(--surface-card);
   }
 
-  .comparison-vs {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin: 0 0 1rem;
-  }
-
-  .comparison-points {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .comparison-points li {
+  .comparison-table {
+    width: 100%;
+    min-width: 36rem;
+    border-collapse: collapse;
     font-size: 0.9375rem;
-    color: var(--text-primary);
-    padding: 0.35rem 0;
-    padding-left: 1.25rem;
-    position: relative;
   }
 
-  .comparison-points li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--success);
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.875rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .comparison-table thead th {
     font-weight: 600;
+    color: var(--text-primary);
+    background: var(--surface-3);
+  }
+
+  .comparison-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .comparison-table .col-feature {
+    color: var(--text-muted);
+    width: 28%;
+  }
+
+  .comparison-table .col-verdikt {
+    font-weight: 500;
+    color: var(--text-primary);
+    background: rgba(99, 102, 241, 0.06);
+  }
+
+  .cell-check {
+    color: var(--success);
+  }
+
+  .comparison-table .col-other {
+    color: var(--text-muted);
   }
 
   @media (max-width: 768px) {
-    .comparison-grid {
-      grid-template-columns: 1fr;
+    .table-wrap {
+      margin: 0 -1rem;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
     }
   }
 </style>

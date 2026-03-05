@@ -18,13 +18,13 @@ const problems = [
 ];
 ---
 
-<section class="section problems">
+<section class="section problems" data-aos="fade-up">
   <div class="section-inner">
-    <h2 class="section-title">Problems we solve</h2>
-    <p class="section-desc">Built for how Indian hiring teams actually work.</p>
+    <h2 class="section-title" data-aos="fade-up">Problems we solve</h2>
+    <p class="section-desc" data-aos="fade-up">Built for how Indian hiring teams actually work.</p>
     <div class="problems-list">
       {problems.map((p) => (
-        <article class="problem-card">
+        <article class="problem-card" data-aos="fade-up">
           <h3 class="problem-title">{p.title}</h3>
           <p class="problem-desc">{p.desc}</p>
           <p class="problem-solution"><strong>Verdikt:</strong> {p.solution}</p>

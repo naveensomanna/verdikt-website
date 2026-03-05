@@ -23,13 +23,13 @@ const steps = [
 ];
 ---
 
-<section class="section how">
+<section class="section how" data-aos="fade-up">
   <div class="section-inner">
-    <h2 class="section-title">How it works</h2>
-    <p class="section-desc">From JD to hire in four steps.</p>
+    <h2 class="section-title" data-aos="fade-up">How it works</h2>
+    <p class="section-desc" data-aos="fade-up">From JD to hire in four steps.</p>
     <div class="steps">
       {steps.map((s) => (
-        <article class="step-card">
+        <article class="step-card" data-aos="fade-up">
           <span class="step-num">{s.step}</span>
           <h3 class="step-title">{s.title}</h3>
           <p class="step-desc">{s.desc}</p>

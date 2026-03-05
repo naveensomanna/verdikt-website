@@ -51,13 +51,13 @@ const plans = [
 ];
 ---
 
-<section id="pricing" class="section pricing">
+<section id="pricing" class="section pricing" data-aos="fade-up">
   <div class="section-inner">
-    <h2 class="section-title">Simple pricing</h2>
-    <p class="section-desc">14 day free trial, no credit card needed. All plans.</p>
+    <h2 class="section-title" data-aos="fade-up">Simple pricing</h2>
+    <p class="section-desc" data-aos="fade-up">14 day free trial, no credit card needed. All plans.</p>
     <div class="pricing-grid">
       {plans.map((plan) => (
-        <article class={`pricing-card ${plan.highlight ? 'highlight' : ''}`}>
+        <article class={`pricing-card ${plan.highlight ? 'highlight' : ''}`} data-aos="fade-up">
           <h3 class="plan-name">{plan.name}</h3>
           <div class="plan-price">
             <span class="price">{plan.price}</span>
@@ -96,7 +96,10 @@ const plans = [
 
   .pricing-card.highlight {
     border-color: var(--primary-500);
-    box-shadow: 0 0 0 1px var(--primary-500);
+    box-shadow:
+      0 0 0 1px var(--primary-500),
+      0 0 24px rgba(99, 102, 241, 0.25),
+      0 0 48px rgba(99, 102, 241, 0.15);
   }
 
   .plan-name {

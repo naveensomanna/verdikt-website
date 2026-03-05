@@ -1,47 +1,26 @@
 ---
 const features = [
-  {
-    title: 'AI Resume Screening',
-    desc: 'Bulk upload resumes, AI ranks every candidate against your job description with match score, skills analysis, and hire recommendation.',
-  },
-  {
-    title: 'Kanban Interview Pipeline',
-    desc: 'Visual drag and drop board to track candidates across custom hiring stages. Create boards per role or team.',
-  },
-  {
-    title: 'Built-in Coding Assessments',
-    desc: 'Unique coding link per candidate. Monaco-powered editor in browser. No candidate login needed. Code saved and reviewed in candidate profile.',
-  },
-  {
-    title: 'Magic Link Feedback',
-    desc: 'Interviewers get unique link after session. No login needed. Rate candidate, add notes, submit Pass/Hold/Fail in 2 minutes.',
-  },
-  {
-    title: 'Automated Email Workflows',
-    desc: 'Interview invites, coding links, feedback reminders all sent automatically.',
-  },
-  {
-    title: 'Real-time Notifications',
-    desc: 'In-app bell and email alerts when candidate submits code or interviewer submits feedback.',
-  },
-  {
-    title: 'Board Management',
-    desc: 'Create separate boards per role or department. Engineering, Sales, HR — all separate pipelines.',
-  },
-  {
-    title: 'Candidate Detail Drawer',
-    desc: 'Full candidate profile with resume, AI analysis, submitted code, and interviewer feedback all in one place.',
-  },
+  { icon: 'file-search', title: 'AI Resume Screening', desc: 'Bulk upload resumes, AI ranks every candidate against your job description with match score, skills analysis, and hire recommendation.' },
+  { icon: 'layout-grid', title: 'Kanban Interview Pipeline', desc: 'Visual drag and drop board to track candidates across custom hiring stages. Create boards per role or team.' },
+  { icon: 'code', title: 'Built-in Coding Assessments', desc: 'Unique coding link per candidate. Monaco-powered editor in browser. No candidate login needed. Code saved and reviewed in candidate profile.' },
+  { icon: 'link', title: 'Magic Link Feedback', desc: 'Interviewers get unique link after session. No login needed. Rate candidate, add notes, submit Pass/Hold/Fail in 2 minutes.' },
+  { icon: 'mail', title: 'Automated Email Workflows', desc: 'Interview invites, coding links, feedback reminders all sent automatically.' },
+  { icon: 'bell', title: 'Real-time Notifications', desc: 'In-app bell and email alerts when candidate submits code or interviewer submits feedback.' },
+  { icon: 'layers', title: 'Board Management', desc: 'Create separate boards per role or department. Engineering, Sales, HR — all separate pipelines.' },
+  { icon: 'folder-open', title: 'Candidate Detail Drawer', desc: 'Full candidate profile with resume, AI analysis, submitted code, and interviewer feedback all in one place.' },
 ];
 ---
 
-<section id="features" class="section features">
+<section id="features" class="section features" data-aos="fade-up">
   <div class="section-inner">
-    <h2 class="section-title">Everything you need to hire better</h2>
-    <p class="section-desc">One platform for screening, assessing, and collecting feedback.</p>
+    <h2 class="section-title" data-aos="fade-up">Everything you need to hire better</h2>
+    <p class="section-desc" data-aos="fade-up">One platform for screening, assessing, and collecting feedback.</p>
     <div class="features-grid">
       {features.map((f) => (
-        <article class="feature-card">
+        <article class="feature-card" data-aos="fade-up">
+          <div class="feature-icon-wrap">
+            <i data-lucide={f.icon} class="feature-icon" aria-hidden="true"></i>
+          </div>
           <h3 class="feature-title">{f.title}</h3>
           <p class="feature-desc">{f.desc}</p>
         </article>
@@ -71,6 +50,22 @@ const features = [
 
   .feature-card:hover {
     border-color: rgba(99, 102, 241, 0.5);
+  }
+
+  .feature-icon-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .feature-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--primary-500);
+    stroke-width: 2;
+  }
+
+  .feature-icon :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   .feature-title {
